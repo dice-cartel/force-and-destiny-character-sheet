@@ -1,0 +1,19 @@
+{
+    "name": "holocron",
+    "version": "1.1.0",
+    "description": "holocron application",
+    "homepage": "https://github.com/lms-holocron/holocron",
+    "bugs": "https://github.com/lms-holocron/holocron/issues",
+    "license": "MIT",
+    "author": {
+        "name" : "Matthew Balmer",
+        "url" : "http://mattbalmer.com"
+    },
+    "repository": {
+        "type" : "git",
+        "url" : "https://github.com/lms-holocron/holocron.git"
+    },
+    "scripts": {
+        "postinstall": "./init.sh"
+    }
+}
