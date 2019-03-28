@@ -75,17 +75,22 @@ If you want to contribute, try to follow these guidelines to make it smoother.
 3. Click `NEW PROJECT` (Top Right)
 4. Fill out Project Name, Organization, and Location as you see fit. These have no impact on this project.
 5. Click `Create`
-6. Ensure you're on the `Credentials` tab, if not - click it.
-7. Open `Create Credentials` dropdown (Blue button, center)
-8. Click `OAuth client ID`
-9. Select `Web application`
-10. Under `Authorized JavaScript origins`, add `http://localhost`
-11. Under `Authorized redirect URIs`, add these:
+6. Ensure you're on the `Dashboard` tab, if not - click it.
+7. Click `Enable APIs & Services`
+8. Click `Google+ API`
+9. Click `Enable`
+10. Go back to the `Dashboard` tab
+11. Switch to the `Credentials` tab.
+12. Open `Create Credentials` dropdown (Blue button, center)
+13. Click `OAuth client ID`
+14. Select `Web application`
+15. Under `Authorized JavaScript origins`, add `http://localhost`
+16. Under `Authorized redirect URIs`, add these:
     * `http://localhost/oauth2callback`
     * `http://localhost/auth/google/callback`
     * `http://localhost/auth/google`
-12. Click `Create`
-13. Copy your `Client ID` and `Client Secret` into their appropriate `GOOGLE_AUTH_*` fields under `@env/server-local.ts`
+17. Click `Create`
+18. Copy your `Client ID` and `Client Secret` into their appropriate `GOOGLE_AUTH_*` fields under `@env/server-local.ts`
 
 ### B. Node Env Variables used in holocron
 
