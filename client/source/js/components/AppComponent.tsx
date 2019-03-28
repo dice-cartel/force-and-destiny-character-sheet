@@ -23,25 +23,25 @@ const userIsAuthenticated = connectedRouterRedirect({
 const AppLayout = containerize(class extends React.Component<any, any> {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <HeaderContainer />
         <main>
-          <div>{this.props.main}</div>
+          {this.props.main}
         </main>
-      </div>
+      </React.Fragment>
     );
   }
 });
 
 const routes = (
-  <div>
+  <React.Fragment>
     <Route component={AppLayout}>
-      <div>
+      <React.Fragment>
         <Route exact path='/' components={{ main: LandingPage }} />
         <Route exact path='/home' components={{ main: userIsAuthenticated(HomePage) }} />
-      </div>
+      </React.Fragment>
     </Route>
-  </div>
+  </React.Fragment>
 );
 
 const mapStateToProps = (state: any) => {
@@ -63,11 +63,11 @@ export const AppComponent = connect(
 )(class AppComponent extends React.Component<any, any> {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Router history={history}>
           {routes}
         </Router>
-      </div>
+      </React.Fragment>
     );
   }
 
