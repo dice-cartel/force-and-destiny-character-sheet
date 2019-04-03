@@ -6,6 +6,7 @@ const routes = express.Router();
 [
   '/',
   '/home',
+  '/characters',
 ].forEach(route => {
   routes.get(route, (req, res) => {
     res.sendFile(path.resolve(Config.STATIC_FILES_PATH, 'index.html'));

@@ -30,6 +30,10 @@ const UserSchema = new mongoose.Schema({
       type: Date,
       required: true,
     },
+    lastLoggedIn: {
+      type: Date,
+      required: true,
+    },
   },
 
   roles: [{
@@ -57,7 +61,12 @@ UserSchema.statics.findOrCreate = async function(profile) {
     }).select('+googleId +email').exec();
 
     if(user) {
-      return user;
+      user.name = profile.name.givenName + ' ' + profile.name.familyName;
+      user.avatar = profile._json && profile._json.image && profile._json.image.url;
+      user.email = profile.emails[0].value;
+      user.dates.lastLoggedIn = new Date().getTime();
+
+      return await user.save();
     }
 
     user = await Model.create({

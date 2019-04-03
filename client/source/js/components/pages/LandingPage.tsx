@@ -18,7 +18,7 @@ export const LandingPage = containerize(class extends React.Component<any, any> 
 }), (dispatch) => {
   return {
     goToHome() {
-      this.router.push('/home');
+      this.router.push('/characters');
     }
   }
 });

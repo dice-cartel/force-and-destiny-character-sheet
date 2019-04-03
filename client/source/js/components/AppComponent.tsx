@@ -10,6 +10,7 @@ import { LandingPage } from '@client/components/pages/LandingPage';
 import { UserActions } from '@client/actions/UserActions';
 import { HomePage } from '@client/components/pages/HomePage';
 import { AppLayoutContainer } from '@client/components/containerized/AppLayoutContainer';
+import { CharacterListPage } from '@client/components/pages/CharacterListPage';
 
 const history = syncHistoryWithStore(browserHistory_, store);
 
@@ -25,6 +26,7 @@ const routes = (
       <React.Fragment>
         <Route exact path='/' components={{ main: LandingPage }} />
         <Route exact path='/home' components={{ main: userIsAuthenticated(HomePage) }} />
+        <Route exact path='/characters' components={{ main: userIsAuthenticated(CharacterListPage) }} />
       </React.Fragment>
     </Route>
   </React.Fragment>
