@@ -6,12 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import { GenericCallback, User } from '@shared/types';
 import { containerize } from '@client/utils/react';
 import { UserState } from '@client/reducers/UserReducer';
-import { AppBar, Badge, IconButton, Toolbar } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { AppstateActions } from '@client/actions/AppstateActions';
 
 export interface HeaderContainerProps {
   users: UserState;
-  logout: GenericCallback;
+  openLeftDrawer: GenericCallback;
 }
 
 export interface HeaderContainerState {
@@ -30,8 +31,11 @@ export const HeaderContainer = containerize(class extends React.Component<Header
     const currentUser: User = currentUserId ? users.users[currentUserId] : null;
 
     return (
-      <AppBar position="static" className={'c-header'}>
+      <AppBar position="static" className={'c-header'} color={'default'}>
         <Toolbar>
+          <IconButton className='c-header__menu-button' color="inherit" aria-label="Menu" onClick={this.props.openLeftDrawer}>
+            <MenuIcon />
+          </IconButton>
           <Typography className='c-header__title' variant="h6" color="inherit" noWrap>
             Holocron
           </Typography>
@@ -79,9 +83,11 @@ export const HeaderContainer = containerize(class extends React.Component<Header
   handleSignout = () => {
     this.handleMenuClose();
     window.location.href = '/auth/logout';
+  };
+}, (state) => ({
+  users: state.users,
+}), (dispatch) => ({
+  openLeftDrawer() {
+    dispatch(AppstateActions.openLeftDrawer());
   }
-}, (state) => {
-  return {
-    users: state.users,
-  }
-});
+}));

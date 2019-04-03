@@ -8,9 +8,8 @@ import { store } from '@client/reducers/store';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { LandingPage } from '@client/components/pages/LandingPage';
 import { UserActions } from '@client/actions/UserActions';
-import { containerize } from '@client/utils/react';
-import { HeaderContainer } from '@client/components/containerized/HeaderContainer';
 import { HomePage } from '@client/components/pages/HomePage';
+import { AppLayoutContainer } from '@client/components/containerized/AppLayoutContainer';
 
 const history = syncHistoryWithStore(browserHistory_, store);
 
@@ -20,22 +19,9 @@ const userIsAuthenticated = connectedRouterRedirect({
   wrapperDisplayName: 'UserIsAuthenticated',
 });
 
-const AppLayout = containerize(class extends React.Component<any, any> {
-  render() {
-    return (
-      <React.Fragment>
-        <HeaderContainer />
-        <main>
-          {this.props.main}
-        </main>
-      </React.Fragment>
-    );
-  }
-});
-
 const routes = (
   <React.Fragment>
-    <Route component={AppLayout}>
+    <Route component={AppLayoutContainer}>
       <React.Fragment>
         <Route exact path='/' components={{ main: LandingPage }} />
         <Route exact path='/home' components={{ main: userIsAuthenticated(HomePage) }} />
