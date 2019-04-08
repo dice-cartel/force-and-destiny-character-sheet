@@ -9,6 +9,10 @@ class DiceService {
         if (config !== null) this.loadDiceFromConfig(config);
     }
 
+    /**
+     * Retrieve a die from the diceSet.
+     * @param die The die being sought.  This should be the die shorthand.
+     */
     public getDie(die: any) {
         if (typeof die === "number")
             this.getNumericDie(die);
@@ -19,6 +23,10 @@ class DiceService {
             return null;
     }
     
+    /**
+     * Retrieve a numeric die, or create it, if it doesn't exist.
+     * @param sides Number of sides of the die.
+     */
     public getNumericDie(sides: number): die {
         // Create new die if one doesn't exist
         if (this.diceSet[sides] !== null) {
@@ -38,6 +46,10 @@ class DiceService {
         }
     }
 
+    /**
+     * Return a die face with the side value configured.
+     * @param value Number of pips on the side of the die or the die face's value.
+     */
     private createNumericPip(value: number): pip {
         let side: pip = {
             name: `{value}`,
@@ -47,6 +59,10 @@ class DiceService {
         return side;
     }
 
+    /**
+     * Load a configuration for custom dice into the diceSet
+     * @param config Configuration for dice with shorthands
+     */
     public loadDiceFromConfig(config: Object) {
         let shorthandConfig = config['shorthand'];
         let diceConfig = config['dice'];
