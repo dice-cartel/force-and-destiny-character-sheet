@@ -3,7 +3,7 @@ import {pip, die} from "types/dice"
 import logger from "./LoggerService"
 
 class DiceService {
-    private diceSet = null;
+    private diceSet = {};
 
     public constructor(config: Object) {
         if (config !== null) this.loadDiceFromConfig(config);
@@ -71,3 +71,5 @@ class DiceService {
         }
     }
 }
+
+export default new DiceService(FnDDice);
